@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Car>
+
+@{
+    ViewData["Title"] = "List";
+    string Category = "";
+}
+
+<h1>汽車種類列表</h1>
+
+@foreach (var car in Model)
+{
+    if (Category != car.Category)
+    {
+        <div class="alert alert-primary" role="alert">
+            <h2>@car.Category</h2>
+        </div>
+        Category = car.Category;
+    }
+
+    //呼叫partial顯示每筆車的資料
+    <partial name="~/Views/Shared/Car/_CarPartial.cshtml" model="car"></partial>
+}
+

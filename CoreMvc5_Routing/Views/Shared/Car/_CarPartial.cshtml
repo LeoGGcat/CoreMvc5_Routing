@@ -1,0 +1,19 @@
+﻿@model Car
+
+<div class="card mb-12">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="~/images/cars/@Model.ImageUrl" class="mx-auto d-block" alt="@Model.Name">
+        </div>
+        <div class="col-md-6">
+            <div class="card-body">
+                <div class="vertical-center">
+                    <h2 class="card-Title text-primary">@Model.Brand</h2>
+                    <h3 class="card-text">@Model.Name - @(Model.Year)年款式</h3>
+                    <h5 class="card-text text-danger">售價 : @Model.Price</h5>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
