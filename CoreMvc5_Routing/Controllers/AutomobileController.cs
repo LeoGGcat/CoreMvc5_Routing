@@ -153,17 +153,23 @@ namespace CoreMvc5_Routing.Controllers
         }
 
         //與路由8「Car/Price/{min}-{max}}」對應
-        //查詢銷售前幾名汽車
+        //查詢價格區間
         public async Task<IActionResult> Price(decimal min,decimal max )
         {
-            //找出所有該類型汽車
+            if (max < min)
+            {
+                (min, max) = (max, min);
+            }
+
+
+                //找出所有該類型汽車
             var cars = await _ctx.Cars.Where(c => c.Price >= min && c.Price <= max).OrderBy(c=>c.Price).ToListAsync();
 
 
-            if (max < min)
-            {
-                cars = await _ctx.Cars.Where(c => c.Price <= min && c.Price >= max).OrderBy(c => c.Price).ToListAsync();
-            }
+            //if (max < min)
+            //{
+            //    cars = await _ctx.Cars.Where(c => c.Price <= min && c.Price >= max).OrderBy(c => c.Price).ToListAsync();
+            //}
 
             if (cars.Count == 0)
             {
