@@ -157,12 +157,12 @@ namespace CoreMvc5_Routing.Controllers
         public async Task<IActionResult> Price(decimal min,decimal max )
         {
             //找出所有該類型汽車
-            var cars = await _ctx.Cars.Where(c => c.Price >= min && c.Price <= max).ToListAsync();
+            var cars = await _ctx.Cars.Where(c => c.Price >= min && c.Price <= max).OrderBy(c=>c.Price).ToListAsync();
 
 
             if (max < min)
             {
-                cars = await _ctx.Cars.Where(c => c.Price <= min && c.Price >= max).ToListAsync();
+                cars = await _ctx.Cars.Where(c => c.Price <= min && c.Price >= max).OrderBy(c => c.Price).ToListAsync();
             }
 
             if (cars.Count == 0)

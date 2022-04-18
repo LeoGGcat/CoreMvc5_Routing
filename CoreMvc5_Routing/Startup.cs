@@ -103,7 +103,7 @@ namespace CoreMvc5_Routing
                 //8.Car/Price/{min}-{max}
                 endpoints.MapControllerRoute(
                     name:"price",
-                    pattern: "Car/Price/{min=10000}-{max=1000000}",
+                    pattern: "Car/Price/{min=10000}-{max=50000}",
                     constraints: new { min = @"^(0|[1-9][0-9]*)", max = @"^(0|[1-9][0-9]*)" },
                     defaults: new { controller = "Automobile", action = "price" });
                     
